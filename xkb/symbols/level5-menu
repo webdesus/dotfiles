@@ -1,0 +1,6 @@
+partial modifier_keys
+xkb_symbols "menu_ctrl" {
+    replace key <MENU> { [Control_R] };
+    modifier_map Control { <MENU> };
+};
+
