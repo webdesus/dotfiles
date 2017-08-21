@@ -6,6 +6,7 @@ xdotool=$(dpkg -s "xdotool"|grep "installed")
 doublecmd=$(dpkg -s "doublecmd-gtk"|grep "installed")
 chrome=$(google-chrome --version|grep "Google Chrome")
 virtualbox=$(virtualbox --help|grep "Oracle VM VirtualBox Manager 5.1")
+telegram=$(dpkg -s "telegram"|grep "installed")
 
 if [ "$awesome" = "" ]; then
     add-apt-repository ppa:klaus-vormweg/awesome
@@ -40,6 +41,11 @@ wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key a
     sudo apt-get install virtualbox-5.1
 fi
 
+if [ "$telegram" = "" ]; then
+    sudo add-apt-repository ppa:atareao/telegram
+    sudo apt-get update
+    sudo apt-get install telegram
+fi
 
 gsettings set org.mate.terminal.global use-mnemonics false
 
