@@ -5,6 +5,7 @@ xbindkeys=$(dpkg -s "xbindkeys"|grep "installed")
 xdotool=$(dpkg -s "xdotool"|grep "installed")
 doublecmd=$(dpkg -s "doublecmd-gtk"|grep "installed")
 chrome=$(google-chrome --version|grep "Google Chrome")
+virtualbox=$(virtualbox --help|grep "Oracle VM VirtualBox Manager 5.1")
 
 if [ "$awesome" = "" ]; then
     add-apt-repository ppa:klaus-vormweg/awesome
@@ -30,6 +31,15 @@ if [ "$doublecmd" = "" ]; then
     sudo apt-get update
     sudo apt-get install doublecmd-gtk
 fi
+
+if [ "$virtualbox" = "" ]; then
+    echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" | sudo tee -a /etc/apt/sources.list
+    wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+    sudo apt-get update
+    sudo apt-get install virtualbox-5.1
+fi
+
 
 gsettings set org.mate.terminal.global use-mnemonics false
 
