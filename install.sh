@@ -1,6 +1,8 @@
 #!/bin/sh
 awesome=$(dpkg -s "awesome"|grep "installed")
 vim=$(vim -h|grep "IMproved 8.0")
+gvim=$(which gvim)
+npm=$(which npm)
 xbindkeys=$(dpkg -s "xbindkeys"|grep "installed")
 xdotool=$(dpkg -s "xdotool"|grep "installed")
 doublecmd=$(dpkg -s "doublecmd-gtk"|grep "installed")
@@ -20,6 +22,15 @@ if [ "$vim" = "" ]; then
     apt update
     apt install vim
 fi
+
+if [ "$npm" = "" ]; then
+    apt install npm
+fi
+
+if [ "$gvim" = "" ]; then  
+    apt install vim-gtk3
+fi
+
 
 if [ "$chrome" = "" ]; then
     sudo apt-get install libxss1 libappindicator1 libindicator7
@@ -47,9 +58,13 @@ if [ "$telegram" = "" ]; then
     sudo apt-get install telegram
 fi
 
-gsettings set org.mate.terminal.global use-mnemonics false
-
 xkbcomp -w 0 -I$HOME/dotfiles/xkb -R$HOME/dotfiles/xkb $HOME/dotfiles/xkb/xkbrc $DISPLAY
+rsync -rtv ~/dotfiles/root/ ~/
+
+if [ ! -f ~/.vim/autoload/plug.vim ]; then
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim    
+    vim +PlugInstall
+fi
 
 
 
