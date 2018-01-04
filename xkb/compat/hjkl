@@ -10,39 +10,39 @@ xkb_compatibility "super_mappings" {
     };
     interpret KP_Up {
         repeat= True;
-        action= RedirectKey(keycode=<UP>, clearmods=Alt);
+        action= RedirectKey(keycode=<UP>, clearmods=Mod3);
     };
     interpret KP_Down {
         repeat= True;
-        action= RedirectKey(keycode=<DOWN>, clearmods=Alt);
+        action= RedirectKey(keycode=<DOWN>, clearmods=Mod3);
     };
     interpret KP_Prior {
         repeat= True;
-        action= RedirectKey(keycode=<PGUP>, clearmods=Alt);
+        action= RedirectKey(keycode=<PGUP>, clearmods=Mod3);
     };
     interpret KP_Next {
         repeat= True;
-        action= RedirectKey(keycode=<PGDN>, clearmods=Alt);
+        action= RedirectKey(keycode=<PGDN>, clearmods=Mod3);
     };
     interpret KP_Home {
         repeat= True;
-        action= RedirectKey(keycode=<HOME>, clearmods=Alt);
+        action= RedirectKey(keycode=<HOME>, clearmods=Mod3);
     };
     interpret KP_End {
         repeat= True;
-        action= RedirectKey(keycode=<END>, clearmods=Alt);
+        action= RedirectKey(keycode=<END>, clearmods=Mod3);
     };
     interpret KP_Enter {
         repeat= True;
-        action= RedirectKey(keycode=<RTRN>, clearmods=Alt);
+        action= RedirectKey(keycode=<RTRN>, clearmods=Mod3);
     };
     interpret KP_Add {
         repeat= True;
-        action= RedirectKey(keycode=<BKSP>, clearmods=Alt);
+        action= RedirectKey(keycode=<BKSP>, clearmods=Mod3);
     };
     interpret KP_Delete {
         repeat= True;
-        action= RedirectKey(keycode=<DELE>, clearmods=Alt);
+        action= RedirectKey(keycode=<DELE>, clearmods=Mod3);
     };
     interpret KP_1 {
         repeat= True;
