@@ -1,6 +1,5 @@
 set nocompatible              " be iMproved, required
-" filetype off                  " required
-set nowrap	"выключение переноса строк
+" filetype off                  " required set nowrap	"выключение переноса строк
 set number	"нумерация строк
 set cursorline "Подсветка текущей строки
 set guioptions-=m  "remove menu bar
@@ -78,14 +77,14 @@ Plug  'ctrlpvim/ctrlp.vim'
 Plug  'godlygeek/tabular'
 Plug  'othree/html5.vim'
 " Plug  'ervandew/supertab'
-Plug  'pangloss/vim-javascript'
+" Plug  'pangloss/vim-javascript'
 Plug  'mattn/emmet-vim'
 Plug  'Valloric/MatchTagAlways'
 Plug  'joshdick/onedark.vim'
 Plug  'vim-airline/vim-airline'
 Plug  'qpkorr/vim-bufkill'
 Plug  'terryma/vim-multiple-cursors'
-Plug  'webdesus/polymer-ide.vim', { 'do': 'npm install' }
+" Plug  'webdesus/polymer-ide.vim', { 'do': 'npm install' }
 Plug  'SirVer/ultisnips'
 Plug  'tomtom/tcomment_vim'
 Plug  'vim-syntastic/syntastic'
@@ -187,13 +186,13 @@ endif
 
 
 " ##map start ##
-noremap <Leader>j :NERDTreeToggle<CR>
+noremap <Leader>o :NERDTreeToggle<CR>
 " noremap <Leader>j <C-W>w
 noremap <Leader>w :close<CR>
-nmap <a-left> <C-W>h
-nmap <a-right> <C-W>l
-nmap <a-up> <C-W>k
-nmap <a-down> <C-W>j
+nmap <Leader>h <C-W>h
+nmap <leader>l <C-W>l
+nmap <leader>k <C-W>k
+nmap <leader>j <C-W>j
 command -nargs=1 Nerd NERDTree <args>
 " map <c-f4> :call SmartExit()<CR>
 map <c-f4> :BW<CR>
@@ -236,17 +235,24 @@ inoremap <S-Tab> <Bs>
 
 :behave mswin
 :set clipboard=unnamedplus
-:vmap <C-c> <C-Insert>
-:imap <C-c> <esc><S-v><C-Insert>
-:nmap <C-c> <S-v><C-Insert>
+" :vmap <C-c> <C-Insert>
+" :imap <C-c> <esc><S-v><C-Insert>
+:nmap <C-c> <S-v>"+y
+:imap <C-c> "+y
+:vmap <C-c> "+y
 
-:vmap <C-x> <C-g><S-Del><Bs><Esc>
-:nmap <C-x> <S-v><C-x>
-" autocmd VimEnter * imap <C-x> <esc><C-x>
 
-autocmd VimEnter * imap <C-v> <S-Insert>
-:vmap <C-v> <C-g><S-Insert>
-:nmap <C-v> <C-g><S-Insert>
+:nmap <C-x> <S-v>"+_d
+:imap <C-x> "+_d
+:vmap <C-x> "_d
+
+" autocmd VimEnter * imap <C-v> <S-Insert>
+" :vmap <C-v> <C-g><S-Insert>
+:nmap <C-v> i<S-Insert><esc>
+:imap <C-v> <S-Insert>
+:vmap <C-v> "_dP
+" :nmap <C-v> "p
+xnoremap p "_dP
 
 " чтобы не затерало буфер удаляемым значением
 :noremap x "_x\"
@@ -262,7 +268,9 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 highlight lCursor guifg=NONE guibg=Cyan
+
 "russian keyboard end
+"
 
 
 " ## Edit .vimrc start ##
