@@ -4,10 +4,11 @@ call plug#begin( '~/.config/nvim/bundle')
 	Plug 'joshdick/onedark.vim'
 	Plug 'scrooloose/nerdtree'
 	Plug 'equalsraf/neovim-gui-shim'
-	Plug 'jlanzarotta/bufexplorer'
+	Plug 'jlanzarotta/bufexplorer' 
 	Plug 'qpkorr/vim-bufkill'
 	Plug 'easymotion/vim-easymotion'
 	Plug 'tomtom/tcomment_vim' 
+	Plug 'Shougo/neosnippet'
 
 	Plug 'vim-airline/vim-airline' 
 	Plug 'tpope/vim-fugitive'
@@ -18,10 +19,13 @@ call plug#begin( '~/.config/nvim/bundle')
 	" rust
 	Plug 'sebastianmarkow/deoplete-rust' 
 
+	Plug 'Shougo/neosnippet-snippets'
+
 call plug#end()
 "}}}
 " ================ General Config ==================== {{{
 	set termguicolors
+	set title                                                                       "change the terminal's title
 	set number                                                                      "Line numbers are good
 	set cursorline                                                                  "Highlight current line
 	set ignorecase                                                                  "case insensitive search
@@ -84,6 +88,8 @@ call plug#end()
 	vnoremap <S-Tab> <gv
 	inoremap <S-Tab> <BS>
 
+	imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
 " }}}
 " ================ Encoding  Menu ======================== {{{
 " Свое меню с выбором кодировки по F8
@@ -123,6 +129,9 @@ call plug#end()
 	let g:deoplete#enable_at_startup = 1                                            "Enable deoplete autocompletion
 	let g:deoplete#file#enable_buffer_path = 1                                      "Autocomplete files relative to current buffer
 	let g:deoplete#tag#cache_limit_size = 10000000                                  "Allow tags file up to ~10 MB
+	let g:deoplete#omni#input_patterns = {}
+	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+	
 
 	let g:airline#extensions#tabline#left_sep = ' '
 	let g:airline#extensions#tabline#left_alt_sep = '|'
