@@ -13,11 +13,19 @@ call plug#begin( '~/.config/nvim/bundle')
 	Plug 'vim-airline/vim-airline' 
 	Plug 'tpope/vim-fugitive'
 
+	Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+	Plug 'junegunn/fzf'
+
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'sheerun/vim-polyglot'
+	Plug 'maksimr/vim-jsbeautify',{'do': 'git submodule update --init --recursive'}
+
 
 	" rust
-	Plug 'sebastianmarkow/deoplete-rust' 
+	" Plug 'sebastianmarkow/deoplete-rust' 
 
 	Plug 'Shougo/neosnippet-snippets'
 
@@ -38,6 +46,7 @@ call plug#end()
 	set pumheight=30                                                                "Maximum number of entries in autocomplete popup
 	set laststatus=0
 	set noshowmode
+	set mouse=a
 
 	syntax on                                                                       "turn on syntax highlighting
 
@@ -79,8 +88,8 @@ call plug#end()
 	nnoremap * *N						
 	" highligth selected 
 	vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
-	nnoremap <C-Right> :tabnext<CR>
-	nnoremap <C-Left> :tabprevious<CR>
+	nnoremap gk :tabnext<CR>
+	nnoremap gj :tabprevious<CR>
 
 	nnoremap <Tab> >>
 	nnoremap <S-Tab> <<
@@ -89,6 +98,9 @@ call plug#end()
 	inoremap <S-Tab> <BS>
 
 	imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+	nmap <C-p> <C-O>
+	nmap <C-n> <C-I>
 
 " }}}
 " ================ Encoding  Menu ======================== {{{
@@ -131,7 +143,7 @@ call plug#end()
 	let g:deoplete#tag#cache_limit_size = 10000000                                  "Allow tags file up to ~10 MB
 	let g:deoplete#omni#input_patterns = {}
 	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-	
+	autocmd FileType html autocmd BufWritePre <buffer> call HtmlBeautify()
 
 	let g:airline#extensions#tabline#left_sep = ' '
 	let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -140,6 +152,23 @@ call plug#end()
 
 	let g:rustfmt_autosave = 1
 
+
+	" Required for operations modifying multiple buffers like rename.
+	set hidden
+
+	let g:LanguageClient_serverCommands = {
+			\ 'rust': ['rustup', 'run', 'stable', 'rls'],
+			\ 'javascript': ['javascript-typescript-stdio'],
+			\ }
+	let g:LanguageClient_hasSnippetSupport = 0
+
+	nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+	nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+	nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+	nnoremap <silent> <C-f> :call LanguageClient#textDocument_documentSymbol()<CR>
+	nnoremap <silent> <C-P> :FZF<CR>
+
 " }}}
 
 
@@ -147,4 +176,23 @@ call plug#end()
 
 	runtime mswin.vim
 	set clipboard+=unnamedplus
+
+
+			function! s:buflist()
+					redir => ls
+					silent ls
+					redir END
+					return split(ls, '\n')
+			endfunction
+
+			function! s:bufopen(e)
+					execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+				endfunction
+
+			nnoremap  <silent> <Leader><Enter>  :call fzf#run({
+						\   'source':  reverse(<sid>buflist()),
+						\   'sink':    function('<sid>bufopen'),
+						\   'options': '+m',
+						\   'down':    len(<sid>buflist()) + 2
+						\ })<CR>
 
