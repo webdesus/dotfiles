@@ -21,8 +21,10 @@ call plug#begin( '~/.config/nvim/bundle')
 
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'sheerun/vim-polyglot'
-	Plug 'maksimr/vim-jsbeautify',{'do': 'git submodule update --init --recursive'}
-
+	" Plug 'maksimr/vim-jsbeautify',{'do': 'git submodule update --init --recursive'}
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 	" rust
 	" Plug 'sebastianmarkow/deoplete-rust' 
@@ -97,7 +99,7 @@ call plug#end()
 	vnoremap <S-Tab> <gv
 	inoremap <S-Tab> <BS>
 
-	imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+	imap <C-k> <Plug>(neosnippet_expand_or_jump)
 
 	nmap <C-p> <C-O>
 	nmap <C-n> <C-I>
@@ -143,7 +145,7 @@ call plug#end()
 	let g:deoplete#tag#cache_limit_size = 10000000                                  "Allow tags file up to ~10 MB
 	let g:deoplete#omni#input_patterns = {}
 	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-	autocmd FileType html autocmd BufWritePre <buffer> call HtmlBeautify()
+	autocmd FileType html autocmd BufWritePre <buffer> Prettier
 
 	let g:airline#extensions#tabline#left_sep = ' '
 	let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -195,4 +197,8 @@ call plug#end()
 						\   'options': '+m',
 						\   'down':    len(<sid>buflist()) + 2
 						\ })<CR>
+
+
+
+		setlocal foldmethod=syntax foldlevelstart=1 
 

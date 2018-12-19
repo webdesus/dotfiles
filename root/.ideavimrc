@@ -1,0 +1,36 @@
+let mapleader=" "
+nmap <Leader>h <C-W>h
+nmap <leader>l <C-W>l
+nmap <leader>k <C-W>k
+nmap <leader>j <C-W>j
+nmap <leader>o :action SelectInProjectView<cr>
+
+
+nnoremap * *N						
+nnoremap gcc :action CommentByLineComment<cr>
+
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+inoremap <S-Tab> <BS>
+
+
+nmap <leader>t :action GotoFile<cr>
+nmap s :action AceAction<cr>
+
+set clipboard+=unnamedplus
+
+
+nnoremap H :action Back<cr>
+nnoremap K :action Forward<cr>
+
+nnoremap <c-f> :action FileStructurePopup<cr>
+nnoremap <c-p> :action GotoFile<cr>
+nnoremap I :action QuickJavaDoc<cr>
+
+set surround
+
+nnoremap <c-.> :action ShowIntentionActions<cr>
+nnoremap <c-,> :action ShowIntentionActions<cr>
+nnoremap <c-s> :action ReformatCode<cr>

@@ -36,4 +36,4 @@ local update_graphic = function(widget, stdout, _, _, _)
 end
 
 
-watch(request_command, 1, update_graphic, volume_widget)
+--watch(request_command, 1, update_graphic, volume_widget)

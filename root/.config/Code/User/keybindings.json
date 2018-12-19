@@ -1,0 +1,46 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "shift+escape",
+        "command": "workbench.action.closePanel"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "extension.vim_cmd+c",
+        "when": "editorTextFocus && vim.mode != 'Normal'"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "outline.focus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "insertSnippet",
+        "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
+    },
+    {
+        "key": "tab",
+        "command": "-insertSnippet",
+        "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "breadcrumbs.focusAndSelect",
+        "when": "breadcrumbsPossible"
+    },
+    {
+        "key": "ctrl+shift+.",
+        "command": "-breadcrumbs.focusAndSelect",
+        "when": "breadcrumbsPossible"
+    }
+    // {
+    //     "key": "meta+c",
+    //     "command": "extension.vim_cmd+c",
+    //     "when": "editorTextFocus && vim.active && vim.overrideCopy && vim.use<D-c> && !inDebugRepl"
+    //   }
+    // {
+    //     "key": "delete",
+    //     "command": "extension.vim_delete",
+    //     "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+    //   }
+]

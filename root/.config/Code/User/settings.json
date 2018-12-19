@@ -1,0 +1,172 @@
+{
+    "workbench.colorTheme": "One Dark Pro",
+    "vim.enableNeovim": false,
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 11,
+    "editor.fontFamily": " 'monospace','Droid Sans Mono', monospace, 'Droid Sans Fallback'",
+    "vim.foldfix": true,
+    "vim.leader": " ",
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.debug.loggingLevel": "debug",
+    "vim.insertModeKeyBindings": [
+    {
+      "before": ["<C-c>" ],
+      "commands": ["editor.action.clipboardCopyAction"]
+    },
+    {
+      "before": ["<C-k>" ],
+      "commands": ["editor.action.insertSnippet"]
+    }
+  ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["s"],
+          "after": ["<leader>", "<leader>","f"]
+        },
+        {
+          "before": ["<leader>", "l"],
+          "after": ["<C-w>", "l"]
+        },
+                {
+          "before": ["<leader>", "j"],
+          "after": ["<C-w>", "j"]
+        },
+                {
+          "before": ["<leader>", "k"],
+          "after": ["<C-w>", "k"]
+        },
+                {
+          "before": ["<leader>", "h"],
+          "after": ["<C-w>", "h"]
+        },
+        {
+          "before": ["<leader>", "w"],
+          "commands": [":close"]
+        },
+        {
+          "before": ["g", "k"],
+          "commands": [":tabnext"]
+        },
+        {
+          "before": ["g", "j"],
+          "commands": [":tabprevious"]
+        },
+        {
+          "before": ["K"],
+          "commands": ["editor.action.showHover"]
+        },
+        {
+          "before": ["tab"],
+          "after": [">",">"]
+        },
+        {
+          "before": ["<S-Tab>"],
+          "after": ["<","<"]
+        },
+        {
+          "before": ["<C-c>"],
+          "after": ["Y"]
+        },
+                {
+          "before": ["<C-v>"],
+          "after": ["P"]
+        },
+              ],
+      "editor.overviewRulerBorder": false,
+      "editor.hideCursorInOverviewRuler": true,
+      "vim.handleKeys": {  "<C-x>": false , "<C-c>":false, "<C-v>":false },
+      "vim.searchHighlightColor": "rgba(150, 150, 255, 0.3)",
+      "vim.visualstar": true,
+      "workbench.iconTheme": null,
+      "workbench.editor.revealIfOpen": true,
+      "workbench.editor.tabSizing": "shrink",
+      "rust-assist.formatOnSave": true,
+      "editor.formatOnSave": true,
+      "breadcrumbs.enabled": true,
+      "extensions.autoUpdate": false,
+      "telemetry.enableCrashReporter": false,
+      "telemetry.enableTelemetry": false,
+      "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": "text.html.markdown.journal.task.open.bullet",
+            "settings": {
+              "foreground": "#FFFF00"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.task.open.marker",
+            "settings": {
+              "foreground": "#FFFF00"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.task.open.keyword",
+            "settings": {
+              "fontStyle": "italic"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.task.open.text",
+            "settings": {}
+          },
+          {
+            "scope": "text.html.markdown.journal.task.completed.keyword",
+            "settings": {
+              "fontStyle": "italic"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.task.completed.marker",
+            "settings": {
+              "foreground": "#AAAAAA"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.task.completed.text",
+            "settings": {
+              "foreground": "#AAAAAA"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.task.completed.bullet",
+            "settings": {
+              "foreground": "#FFFF00"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.memo.keyword",
+            "settings": {
+              "fontStyle": "italic"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.memo.bullet",
+            "settings": {
+              "foreground": "#FFFF00"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.scope",
+            "settings": {
+              "foreground": "#FFFF00"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.link.keyword",
+            "settings": {
+              "fontStyle": "italic"
+            }
+          },
+          {
+            "scope": "text.html.markdown.journal.link.bullet",
+            "settings": {
+              "foreground": "#FFFF00"
+            }
+          }
+        ]
+      },
+
+
+}
